@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CRTN Calculator</title>
+        <link rel="stylesheet" href="assets/style/style.css">
+    </head>
+    <body>
+        <div class="content-container">
+            <div class="calculator-container">
+                <div class="header">
+                    <h1>CRTN Calculator</h1>
+                    <p>Road Noise Assessment Tool</p>
+                </div>
+                <div class="grid-container">
+                    <div class="input-col">
+                        <h3 class="input-header">Inputs</h3>
+                        <div class="parameter-row">
+                            <label>Vehicles observed</label>
+                            <div><input type="number" value="0" id="totalVehicles"><span class="unit"></span></div>
+                        </div>
+                        <div class="parameter-row">
+                            <label>HGVs observed</label>
+                            <div><input type="number" value="0" id="hgvCount"><span class="unit"></span></div>
+                        </div>
+                        <div class="parameter-row">
+                            <label>Time observed</label>
+                            <div>
+                                <input type="number" value="0" id="timeObserved">
+                                <div class="custom-toggle">
+                                    <input type="radio" id="unit-mins" name="timeUnit" value="mins" class="toggle-input" checked>
+                                    <label for="unit-mins" class="toggle-label">mins</label>
+                                    <input type="radio" id="unit-hours" name="timeUnit" value="hours" class="toggle-input">
+                                    <label for="unit-hours" class="toggle-label">hrs</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="parameter-row">
+                            <label>Speed</label>
+                            <div>
+                                <input type="number" value="0" id="velocity">
+                                <div class="custom-toggle">
+                                    <input type="radio" id="unit-kph" name="speedUnit" value="kph" class="toggle-input" checked>
+                                    <label for="unit-kph" class="toggle-label">km/h</label>
+                                    <input type="radio" id="unit-mph" name="speedUnit" value="mph" class="toggle-input">
+                                    <label for="unit-mph" class="toggle-label">mph</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="parameter-row">
+                            <label>Road angle</label>
+                            <div><input type="number" value="0" id="angle"><span class="unit">deg</span></div>
+                        </div>
+                    </div>
+                    <div class="output-col">
+                        <h3 class="output-header">Calculations</h3>
+                        <div class="parameter-row">
+                            <label>Vehicles per hour</label>
+                            <div><span class="output-box" id="vph">0</span><span class="unit"></span></div>
+                        </div>
+                        <div class="parameter-row">
+                            <label>CRTN calculation</label>
+                            <div><span class="output-box" id="crtnCalc">0.00</span><span class="unit">dB</span></div>
+                        </div>
+                        <div class="parameter-row">
+                            <label>HGV percentage</label>
+                            <div><span class="output-box" id="pctHgv">0.00</span><span class="unit">%</span></div>
+                        </div>
+                        <div class="parameter-row">
+                            <label>Speed & HGV correction</label>
+                            <div><span class="output-box" id="corrSpeedHgv">0.00</span><span class="unit">dB</span></div>
+                        </div>
+                        <div class="parameter-row">
+                            <label>Angular correction</label>
+                            <div><span class="output-box" id="angCorr">0.00</span><span class="unit">dB</span></div>
+                        </div>
+                        <div class="parameter-row">
+                            <label class="output-db">Corrected level</label>
+                            <div><span class="output-box output-db" id="corrLevel">0.00</span><span class="unit">dB</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <h3 class="debug-header">Debug Console</h3>
+                <div id="debug-log" class="debug-console">Waiting for user input...</div> -->
+            </div>
+        </div>
+        <script src="assets/script/script.js"></script>
+        <script>
+            function setup(htmlComponent) {
+                connectToMatlab(htmlComponent);
+            }
+        </script>
+    </body>
+</html>

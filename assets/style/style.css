@@ -1,0 +1,230 @@
+@font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/font/inter-variable.woff2") format("woff2");
+}
+
+:root {
+    --bg-1: #111111;
+    --bg-2: #1c1c1c;
+    --bg-3: #2a2a2a;
+    --fg-1: #ededed;
+    --fg-2: #a1a1aa;
+    --bd: #333333;
+    --e: #ff5252;
+    --w: #ffe652;
+    --s: #52ffb3;
+    --i: #2fbffd;
+}
+
+* {
+    font-family: "Inter", sans-serif;
+    transition: .125s ease-in-out;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--fg-1);
+}
+
+.content-container {
+    display: flex;
+    width: 100%;
+    max-width: 56rem;
+    padding: 2rem;
+}
+
+.calculator-container {
+    border-radius: 1rem;
+    width: 100%;
+    padding: 2rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.header p {
+    color: var(--fg-2);
+    margin: .5rem 0 0 0;
+}
+
+.input-header {
+    color: var(--i);
+}
+
+.output-header {
+    color: var(--s);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.parameter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--bd);
+}
+
+.parameter-row label {
+    font-size: .9rem;
+    color: var(--fg-1);
+}
+
+input[type="number"], .output-box {
+    background: var(--bg-2);
+    border: 1px solid var(--bd);
+    color: var(--fg-1);
+    border-radius: .5rem;
+    padding: .5rem;
+    width: 5rem;
+    height: 2.2rem;
+    text-align: right;
+    font-weight: 600;
+}
+
+input[type="number"]:hover {
+    border-color: var(--i);
+    background: var(--bg-3);
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--i);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.output-col .output-box {
+    border: 1px solid var(--bd);
+    background: transparent;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.output-col .output-box:hover {
+    border-color: var(--s);
+    background: var(--bg-2);
+}
+
+.parameter-row > div {
+    display: flex;
+    align-items: center;
+}
+
+.unit {
+    font-size: .8rem;
+    color: var(--fg-2);
+    margin-left: .5rem;
+    width: 2rem;
+    display: inline-block;
+}
+
+.input-col .unit {
+    width: 6rem; 
+}
+.custom-toggle {
+    display: flex;
+    background: var(--bg-1);
+    border: 1px solid var(--bd);
+    border-radius: .5rem;
+    margin-left: .5rem;
+    overflow: hidden;
+    width: 6rem;
+    height: 2.2rem;
+}
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .75rem;
+    color: var(--fg-2);
+    cursor: pointer;
+    user-select: none;
+    transition: .15s ease-in-out;
+}
+
+.toggle-label:hover {
+    background: var(--bg-3);
+    color: var(--fg-1);
+}
+
+.toggle-input:checked + .toggle-label {
+    background: var(--bg-3);
+    color: var(--fg-1);
+}
+
+.output-db {
+    color: var(--s);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+input.invalid {
+    border-color: var(--e);
+    background-color: color-mix(in srgb, var(--e) 15%, transparent);
+}
+
+input.invalid:focus, input.invalid:hover {
+    border-color: var(--e);
+    background-color: color-mix(in srgb, var(--e) 25%, transparent);
+}
+
+.debug-header {
+    color: var(--i);
+    margin: 2rem 0 .5rem;
+    font-size: 1rem;
+}
+
+.debug-console {
+    background: #000;
+    border: 1px solid var(--bd);
+    border-radius: .5rem;
+    padding: .75rem;
+    color: var(--s);
+    font-family: monospace;
+    font-size: .75rem;
+    height: 6rem;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
