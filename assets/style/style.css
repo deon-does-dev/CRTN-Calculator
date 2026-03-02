@@ -37,20 +37,19 @@ body {
 
 .content-container {
     display: flex;
-    width: 100%;
-    max-width: 56rem;
-    padding: 2rem;
+    width: 90%;
+    padding: 1rem 2rem 0;
 }
 
 .calculator-container {
     border-radius: 1rem;
     width: 100%;
-    padding: 2rem;
+    padding: 1rem 2rem 0;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .header h1 {
@@ -73,7 +72,7 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
 }
 
@@ -119,6 +118,7 @@ input::-webkit-inner-spin-button {
 }
 
 input[type=number] {
+    appearance: textfield;
     -moz-appearance: textfield;
 }
 
@@ -219,12 +219,72 @@ input.invalid:focus, input.invalid:hover {
     font-size: .75rem;
     height: 6rem;
     overflow-y: auto;
+    margin: 0;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
-@media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
+.custom-select {
+    position: relative;
+    width: 11.5rem; 
+    height: 2.2rem;
+    font-size: .8rem;
+    user-select: none;
+}
+
+.select-selected {
+    background: var(--bg-2);
+    border: 1px solid var(--bd);
+    color: var(--fg-1);
+    border-radius: .5rem;
+    padding: 0 .5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.select-selected:hover {
+    border-color: var(--i);
+    background: var(--bg-3);
+}
+
+.select-selected::after {
+    content: "▼";
+    font-size: .6rem;
+    margin-left: auto;
+    color: var(--fg-2);
+}
+
+.select-items {
+    position: absolute;
+    background: var(--bg-2);
+    border: 1px solid var(--bd);
+    border-radius: .5rem;
+    top: 115%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    overflow: hidden;
+    box-shadow: 0 4px 12px #00000080;
+}
+
+.select-hide {
+    display: none;
+}
+
+.select-items div {
+    color: var(--fg-1);
+    padding: .5rem;
+    cursor: pointer;
+    border-bottom: 1px solid var(--bg-1);
+}
+
+.select-items div:hover {
+    background: var(--bg-3);
+    color: var(--i);
+}
+
+.select-items div:last-child {
+    border-bottom: none;
 }
